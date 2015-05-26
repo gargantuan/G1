@@ -1,0 +1,20 @@
+{
+  "name": "g1",
+  "version": "1.0.0",
+  "description": "A genetic programming experiment",
+  "main": "scratchpad.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "babel-node index.js",
+    "test": "mocha --compilers js:babel/register"
+  },
+  "author": "Tom Elders <him@tomelders.com> (http://www.tomelders.com)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^5.4.7",
+    "chai": "^2.3.0",
+    "jspm": "^0.15.6"
+  }
+}
