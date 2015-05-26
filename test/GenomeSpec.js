@@ -1,11 +1,21 @@
 'use strict';
 import Genome, {genomeErrors} from '../lib/Genome.js';
 import chai, {expect} from 'chai';
+import sinon from 'sinon';
+ 
+beforeEach(function() {
+  this.sinon = sinon.sandbox.create();
+});
+ 
+afterEach(function(){
+  this.sinon.restore();
+});
+
 chai.should();
 
 describe('Genome', () => {
 
-	let genome = new Genome();
+	var genome = new Genome();
 
 	describe('#encode', ()=>{
 
@@ -54,6 +64,42 @@ describe('Genome', () => {
 		
 			genome.calculateGeneSize([0,10,100]).should.be.a('number');
 		
+		});
+
+	});
+
+	describe('#transfer', ()=>{
+
+		it('Should reject genomes of different lengths', () => {
+			var a = '00000';
+			var b = '000000';
+			var fn = function(){ genome.transfer(a,b); };
+			expect(fn).to.throw(genomeErrors.INCOMPATIBLE_GENOMES);
+		});
+
+		it('should return a binary string', () => {
+			var a = '0001';
+			var b = '0010';
+			genome.transfer(a,b).should.match(/^([01]{4})+$/);
+
+		});
+
+		it('should cross over all bits from a to b', ()=>{
+			sinon.stub(Math, 'random').returns(0);
+			var g = new Genome({mutationRate: 0, crossRate: 1});
+			var a = '0000';
+			var b= '1111';
+			g.transfer(a,b).should.equal(b);
+			sinon.stub(Math, 'random').restore();
+		});
+
+		it('should mutate all genes', ()=>{
+			sinon.stub(Math, 'random').returns(0);
+			var g = new Genome({mutationRate: 1, crossRate: 1});
+			var a = '0000';
+			var b= '0000';
+			g.transfer(a,b).should.equal('1111');
+			sinon.stub(Math, 'random').restore();
 		});
 
 	});

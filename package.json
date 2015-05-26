@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A genetic programming experiment",
   "main": "scratchpad.js",
+  "repository": "https://github.com/gargantuan/G1.git",
   "directories": {
     "test": "test"
   },
@@ -14,6 +15,10 @@
   "license": "ISC",
   "devDependencies": {
     "babel": "^5.4.7",
-    "chai": "^2.3.0"
+    "chai": "^2.3.0",
+    "sinon": "^1.14.1"
+  },
+  "dependencies": {
+    "seed-random": "^2.2.0"
   }
 }
