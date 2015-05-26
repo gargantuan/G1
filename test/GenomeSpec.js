@@ -70,6 +70,10 @@ describe('Genome', () => {
 
 	describe('#transfer', ()=>{
 
+		before(()=>{
+			sinon.stub(Math, 'random').returns(0);
+		});
+
 		it('Should reject genomes of different lengths', () => {
 			var a = '00000';
 			var b = '000000';
@@ -85,7 +89,6 @@ describe('Genome', () => {
 		});
 
 		it('should cross over all bits from a to b', ()=>{
-			sinon.stub(Math, 'random').returns(0);
 			var g = new Genome({mutationRate: 0, crossRate: 1});
 			var a = '0000';
 			var b= '1111';
@@ -94,9 +97,9 @@ describe('Genome', () => {
 
 		it('should mutate all genes', ()=>{
 			var g = new Genome({mutationRate: 1, crossRate: 1});
-			var a = '0000';
-			var b= '0000';
-			g.transfer(a,b).should.equal('1111');
+			var a = '1111';
+			var b = '1111';
+			g.transfer(a,b).should.equal('0000');
 		});
 
 	});
