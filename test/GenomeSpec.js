@@ -90,16 +90,13 @@ describe('Genome', () => {
 			var a = '0000';
 			var b= '1111';
 			g.transfer(a,b).should.equal(b);
-			sinon.stub(Math, 'random').restore();
 		});
 
 		it('should mutate all genes', ()=>{
-			sinon.stub(Math, 'random').returns(0);
 			var g = new Genome({mutationRate: 1, crossRate: 1});
 			var a = '0000';
 			var b= '0000';
 			g.transfer(a,b).should.equal('1111');
-			sinon.stub(Math, 'random').restore();
 		});
 
 	});
