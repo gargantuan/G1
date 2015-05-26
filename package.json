@@ -14,7 +14,6 @@
   "license": "ISC",
   "devDependencies": {
     "babel": "^5.4.7",
-    "chai": "^2.3.0",
-    "jspm": "^0.15.6"
+    "chai": "^2.3.0"
   }
 }
