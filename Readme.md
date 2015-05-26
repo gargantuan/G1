@@ -9,7 +9,6 @@ A tiny Genetic Programming library written in ES6
 
 ### Using G1
 
-- Install dependencies with npm install 
-
-### Introduction
-
+- Install dependencies with `npm install`
+- Run index.js with `npm start`
+- Run tests with `npm test`
