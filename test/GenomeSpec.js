@@ -68,7 +68,7 @@ describe('Genome', () => {
 
 	});
 
-	describe('#transfer', ()=>{
+	describe('#combine', ()=>{
 
 		before(()=>{
 			sinon.stub(Math, 'random').returns(0);
@@ -77,14 +77,14 @@ describe('Genome', () => {
 		it('Should reject genomes of different lengths', () => {
 			var a = '00000';
 			var b = '000000';
-			var fn = function(){ genome.transfer(a,b); };
+			var fn = function(){ genome.combine(a,b); };
 			expect(fn).to.throw(genomeErrors.INCOMPATIBLE_GENOMES);
 		});
 
 		it('should return a binary string', () => {
 			var a = '0001';
 			var b = '0010';
-			genome.transfer(a,b).should.match(/^([01]{4})+$/);
+			genome.combine(a,b).should.match(/^([01]{4})+$/);
 
 		});
 
@@ -92,14 +92,14 @@ describe('Genome', () => {
 			var g = new Genome({mutationRate: 0, crossRate: 1});
 			var a = '0000';
 			var b= '1111';
-			g.transfer(a,b).should.equal(b);
+			g.combine(a,b).should.equal(b);
 		});
 
 		it('should mutate all genes', ()=>{
 			var g = new Genome({mutationRate: 1, crossRate: 1});
 			var a = '1111';
 			var b = '1111';
-			g.transfer(a,b).should.equal('0000');
+			g.combine(a,b).should.equal('0000');
 		});
 
 	});
