@@ -99,7 +99,7 @@ describe('Genome', () => {
 			var g = new Genome({mutationRate: 1, crossRate: 1});
 			var a = '1111';
 			var b = '1111';
-			g.combine(a,b).should.equal('XXXX');
+			g.combine(a,b).should.equal('0000');
 		});
 
 	});
